@@ -19,7 +19,8 @@ def random_walk():
     tim.speed("fastest")
     tim.pensize(10)
     for _ in range(1, 500):
-        tim.color(random.choice(colors))
+        random_color = (random.random(), random.random(), random.random())
+        tim.color(random_color)
         direction = random.choice(directions)
         tim.setheading(direction)
         tim.forward(30)
