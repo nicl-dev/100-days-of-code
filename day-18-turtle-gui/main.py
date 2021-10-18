@@ -1,3 +1,4 @@
+import turtle
 import turtle as t
 import random
 
@@ -34,7 +35,14 @@ def random_walk():
         tim.forward(30)
 
 
-random_walk()
+def draw_spirograph(tilt):
+    tim.speed("fastest")
+    for _ in range(360 // tilt):
+        tim.color(random_color())
+        tim.circle(100)
+        tim.left(tilt)
 
+
+draw_spirograph(5)
 screen = t.Screen()
 screen.exitonclick()
