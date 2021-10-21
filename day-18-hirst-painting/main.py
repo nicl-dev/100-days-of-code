@@ -10,8 +10,6 @@ for color in random_colors:
     rgb = (r, g, b)
     my_colors.append(rgb)
 
-print(my_colors)
-
 # i manually deleted the whitish colors here
 filtered_colors: [(43, 104, 170), (233, 206, 115), (227, 152, 86), (186, 47, 75), (118, 88, 48), (230, 118, 145),
                   (110, 109, 188), (214, 61, 79), (54, 177, 113), (115, 185, 138), (122, 177, 213), (198, 18, 41),
