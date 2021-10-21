@@ -1,6 +1,6 @@
 import colorgram
 
-random_colors = colorgram.extract('image.jpg', 10)
+random_colors = colorgram.extract('image.jpg', 30)
 my_colors = []
 
 for color in random_colors:
