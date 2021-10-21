@@ -1,4 +1,6 @@
 import colorgram
+import turtle
+import random
 
 random_colors = colorgram.extract('image.jpg', 30)
 my_colors = []
@@ -16,3 +18,7 @@ filtered_colors: [(43, 104, 170), (233, 206, 115), (227, 152, 86), (186, 47, 75)
                   (115, 170, 36), (33, 57, 113), (220, 53, 47), (26, 142, 109), (181, 168, 224), (155, 223, 193),
                   (29, 163, 173), (84, 35, 39), (33, 45, 82), (231, 168, 181), (75, 37, 35), (233, 172, 163),
                   (100, 45, 41), (152, 207, 220)]
+
+tim = turtle.Turtle()
+tim.shape("turtle")
+
