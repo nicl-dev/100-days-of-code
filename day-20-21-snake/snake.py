@@ -22,13 +22,17 @@ class Snake:
         self.snake_parts[0].forward(MOVEMENT_SPEED)
 
     def up(self):
-        self.head.setheading(90)
+        if self.head.heading() != 270:
+            self.head.setheading(90)
 
     def down(self):
-        self.head.setheading(270)
+        if self.head.heading() != 90:
+            self.head.setheading(270)
 
     def left(self):
-        self.head.setheading(180)
+        if self.head.heading() != 0:
+            self.head.setheading(180)
 
     def right(self):
-        self.head.setheading(0)
+        if self.head.heading() != 180:
+            self.head.setheading(0)
