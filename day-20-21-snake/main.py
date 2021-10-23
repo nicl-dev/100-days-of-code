@@ -21,11 +21,16 @@ screen.onkey(snake.up, "w")
 screen.onkey(snake.down, "s")
 screen.onkey(snake.left, "a")
 screen.onkey(snake.right, "d")
+screen.onkey(screen.bye, "Escape")
 
 game_is_on = True
 while game_is_on:
     screen.update()
     time.sleep(0.1)
     snake.move()
+
+    # Detect collision with food.
+    if snake.head.distance(food) < 15:
+        food.refresh()
 
 screen.exitonclick()
