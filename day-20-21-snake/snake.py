@@ -1,10 +1,12 @@
 from turtle import Turtle
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
+MOVEMENT_SPEED = 20
 
 
 class Snake:
     def __init__(self):
         self.snake_parts = []
+        self.create_snake()
 
     def create_snake(self):
         for position in STARTING_POSITIONS:
@@ -19,4 +21,4 @@ class Snake:
             new_x = self.snake_parts[snake_part - 1].xcor()
             new_y = self.snake_parts[snake_part - 1].ycor()
             self.snake_parts[snake_part].goto(new_x, new_y)
-        self.snake_parts[0].forward(20)
+        self.snake_parts[0].forward(MOVEMENT_SPEED)
