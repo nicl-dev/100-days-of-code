@@ -34,6 +34,7 @@ while game_is_on:
     # Detect collision with food and update scoreboard.
     if snake.head.distance(food) < 17:
         food.refresh()
+        snake.extend()
         scoreboard.clear()
         scoreboard.increase_score()
 
