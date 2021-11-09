@@ -27,7 +27,14 @@ while game_on:
         ball.bounce_y()
 
     # Detect collision with player2
-    if ball.distance(player2) < 50 and ball.xcor() > 340 or ball.distance(player1) < 50 and ball.xcor() < -340:
+    if ball.distance(player2) < 50 and ball.xcor() > 330 or ball.distance(player1) < 50 and ball.xcor() < -330:
         ball.bounce_x()
+
+    # Detect misses
+    if ball.xcor() > 390:
+        ball.reset_position()
+
+    if ball.xcor() < -390:
+        ball.reset_position()
 
 screen.exitonclick()
