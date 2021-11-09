@@ -30,7 +30,6 @@ while game_on:
 
     # Detect collision with player1 and player2
     if ball.distance(player2) < 50 and ball.xcor() > 330 or ball.distance(player1) < 50 and ball.xcor() < -330:
-        ball.increase_speed()
         ball.bounce_x()
 
     # Detect misses
