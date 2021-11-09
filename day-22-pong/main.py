@@ -28,8 +28,9 @@ while game_on:
     if ball.ycor() > 280 or ball.ycor() < -280:
         ball.bounce_y()
 
-    # Detect collision with player2
+    # Detect collision with player1 and player2
     if ball.distance(player2) < 50 and ball.xcor() > 330 or ball.distance(player1) < 50 and ball.xcor() < -330:
+        ball.increase_speed()
         ball.bounce_x()
 
     # Detect misses
