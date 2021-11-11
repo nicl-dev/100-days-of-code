@@ -10,6 +10,7 @@ class CarManager:
     def __init__(self):
         self.cars = []
         self.spawn_car()
+        self.speed = STARTING_MOVE_DISTANCE
 
     def spawn_car(self):
         car = Turtle("square")
@@ -21,6 +22,9 @@ class CarManager:
 
     def move_cars(self):
         for car in range(len(self.cars)):
-            new_x = self.cars[car].xcor() - STARTING_MOVE_DISTANCE
+            new_x = self.cars[car].xcor() - self.speed
             new_y = self.cars[car].ycor()
             self.cars[car].goto(new_x, new_y)
+
+    def increase_speed(self):
+        self.speed += MOVE_INCREMENT
