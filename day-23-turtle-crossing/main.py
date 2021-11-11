@@ -9,6 +9,7 @@ screen.setup(width=600, height=600)
 screen.listen()
 player = Player()
 screen.onkeypress(player.move, "w")
+scoreboard = Scoreboard()
 car_manager = CarManager()
 
 game_is_on = True
@@ -23,9 +24,11 @@ while game_is_on:
 
     for car in car_manager.cars:
         if player.distance(car) < 20:
+            scoreboard.game_over()
             game_is_on = False
 
     if player.ycor() == 300:
+        scoreboard.increase_level()
         player.reset()
         car_manager.increase_speed()
 
