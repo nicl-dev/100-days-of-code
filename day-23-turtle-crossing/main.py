@@ -18,8 +18,15 @@ while game_is_on:
     car_manager.move_cars()
     screen.update()
     loop_count += 1
-    if loop_count % 12 == 0:
+    if loop_count % 6 == 0:
         car_manager.spawn_car()
 
+    for car in car_manager.cars:
+        if player.distance(car) < 20:
+            game_is_on = False
+
+    if player.ycor() == 300:
+        player.reset()
+        car_manager.increase_speed()
 
 screen.exitonclick()
