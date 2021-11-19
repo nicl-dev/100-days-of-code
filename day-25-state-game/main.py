@@ -14,4 +14,7 @@
 import pandas
 
 data = pandas.read_csv("weather_data.csv")
-print(data["temp"])
+average_temperature = data.temp.mean()
+max_temperature = data.temp.max()
+print(average_temperature)
+print(max_temperature)
