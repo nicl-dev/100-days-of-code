@@ -10,21 +10,27 @@ turtle.shape(background)
 turtle.penup()
 turtle.tracer(0)
 df = pandas.read_csv("50_states.csv")
-game_is_on = "yes"
 score = 0
 all_states = df.state.to_list()
 correct_guesses = []
+missed_states = []
 
-while game_is_on:
+while len(correct_guesses) < 50:
     answer_state = screen.textinput(title=f"{score}/50 States Correct", prompt="What's another state name?").title()
     while answer_state in correct_guesses:
         answer_state = screen.textinput(title=f"{score}/50 States Correct", prompt="You already guessed that "
                                                                                    "state.\nWhat's another state "
                                                                                    "name?").title()
+    if answer_state == "Exit":
+        break
     if answer_state in all_states:
         score += 1
         correct_guesses.append(answer_state)
         turtle.setpos(x=int(df[df.state == answer_state].x), y=int(df[df.state == answer_state].y))
         turtle.write(answer_state)
 
-turtle.mainloop()
+for state in all_states:
+    if state not in correct_guesses:
+        missed_states.append(state)
+missed_states = pandas.DataFrame(missed_states)
+missed_states.to_csv("states_to_learn.csv")
