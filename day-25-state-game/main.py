@@ -29,8 +29,6 @@ while len(correct_guesses) < 50:
         turtle.setpos(x=int(df[df.state == answer_state].x), y=int(df[df.state == answer_state].y))
         turtle.write(answer_state)
 
-for state in all_states:
-    if state not in correct_guesses:
-        missed_states.append(state)
+missed_states = [state for state in all_states if state not in correct_guesses]
 missed_states = pandas.DataFrame(missed_states)
 missed_states.to_csv("states_to_learn.csv")
