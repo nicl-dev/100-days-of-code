@@ -13,7 +13,6 @@ df = pandas.read_csv("50_states.csv")
 score = 0
 all_states = df.state.to_list()
 correct_guesses = []
-missed_states = []
 
 while len(correct_guesses) < 50:
     answer_state = screen.textinput(title=f"{score}/50 States Correct", prompt="What's another state name?").title()
