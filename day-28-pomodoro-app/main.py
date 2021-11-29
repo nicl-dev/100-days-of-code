@@ -24,7 +24,19 @@ window.config(padx=100, pady=50, bg=YELLOW)
 canvas = Canvas(width=203, height=224, bg=YELLOW, highlightthickness=0)
 tomato_img = PhotoImage(file="tomato.png")
 canvas.create_image(100, 112, image=tomato_img)
-canvas.pack()
 canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 25, "bold"))
+canvas.grid(row=1, column=1)
+
+timer_label = Label(bg=YELLOW, fg=GREEN, text="Timer", font=(FONT_NAME, 35, "bold"))
+timer_label.grid(row=0, column=1)
+
+completed_timers = Label(bg=YELLOW, fg=GREEN, text="🗸", font=(FONT_NAME, 35, "bold"))
+completed_timers.grid(row=2, column=1)
+
+start_timer = Button(text="Start")
+start_timer.grid(row=2, column=0)
+
+reset_timer = Button(text="Reset")
+reset_timer.grid(row=2, column=2)
 
 window.mainloop()
