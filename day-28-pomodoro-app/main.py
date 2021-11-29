@@ -18,7 +18,6 @@ timer = None
 # ---------------------------- TIMER RESET ------------------------------- #
 def reset_timer():
     global reps
-    global timer_text
     global timer_running
     timer_running = False
     window.after_cancel(timer)
