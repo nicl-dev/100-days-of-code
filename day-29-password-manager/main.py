@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import messagebox
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -8,9 +9,13 @@ def save():
     website = website_input.get()
     username = username_input.get()
     password = password_input.get()
+
     if website and username and password:
         with open("data.txt", mode="a") as data:
             data.write(f"{website} | {username} | {password}\n")
+        messagebox.showinfo(title="Saved", message="Credentials successfully saved.")
+    else:
+        messagebox.showerror(title="Missing data", message="Please make sure you provided all credentials.")
     website_input.delete(0, "end")
     password_input.delete(0, "end")
 
