@@ -17,7 +17,7 @@ def save():
             with open("data.txt", mode="a") as data:
                 data.write(f"{website} | {username} | {password}\n")
     else:
-        messagebox.showerror(title="Missing data", message="Please make sure you provided all credentials.")
+        messagebox.showerror(title="Oops :(", message="Please make sure you provided all credentials.")
     website_input.delete(0, "end")
     password_input.delete(0, "end")
 
