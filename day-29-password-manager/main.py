@@ -11,9 +11,11 @@ def save():
     password = password_input.get()
 
     if website and username and password:
-        with open("data.txt", mode="a") as data:
-            data.write(f"{website} | {username} | {password}\n")
-        messagebox.showinfo(title="Saved", message="Credentials successfully saved.")
+        save_ok = messagebox.askokcancel(title=website, message=f"Saving the following credentials:\nWebsite: {website}"
+                                                                f"\nUsername: {username}\nPassword: {password}")
+        if save_ok:
+            with open("data.txt", mode="a") as data:
+                data.write(f"{website} | {username} | {password}\n")
     else:
         messagebox.showerror(title="Missing data", message="Please make sure you provided all credentials.")
     website_input.delete(0, "end")
