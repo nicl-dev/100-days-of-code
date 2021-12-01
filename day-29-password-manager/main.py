@@ -24,7 +24,7 @@ username_label.grid(row=2, column=0)
 password_label = Label(text="Password:")
 password_label.grid(row=3, column=0)
 
-# Inputs
+# Entries
 website_input = Entry(width=35)
 website_input.grid(row=1, column=1, columnspan=2, sticky="EW")
 
@@ -32,7 +32,7 @@ username_input = Entry(width=35)
 username_input.grid(row=2, column=1, columnspan=2, stick="EW")
 
 password_input = Entry(width=21)
-password_input.grid(row=3, column=1, sticky="WE")
+password_input.grid(row=3, column=1, sticky="EW")
 
 # Buttons
 generate_password_button = Button(text="Generate Password", width=14)
