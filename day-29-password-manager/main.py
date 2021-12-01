@@ -8,8 +8,9 @@ def save():
     website = website_input.get()
     username = username_input.get()
     password = password_input.get()
-    with open("data.txt", mode="a") as data:
-        data.write(f"{website} | {username} | {password}\n")
+    if website and username and password:
+        with open("data.txt", mode="a") as data:
+            data.write(f"{website} | {username} | {password}\n")
     website_input.delete(0, "end")
     password_input.delete(0, "end")
 
