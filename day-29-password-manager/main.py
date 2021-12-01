@@ -30,6 +30,7 @@ website_input.grid(row=1, column=1, columnspan=2, sticky="EW")
 
 username_input = Entry(width=35)
 username_input.grid(row=2, column=1, columnspan=2, stick="EW")
+username_input.focus()
 
 password_input = Entry(width=21)
 password_input.grid(row=3, column=1, sticky="EW")
