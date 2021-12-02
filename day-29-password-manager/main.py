@@ -67,11 +67,11 @@ def search_credentials():
         try:
             with open("data.json", "r") as data_file:
                 data = json.load(data_file)
-                username = data[website]["Username"]
-                password = data[website]["Password"]
         except FileNotFoundError:
             messagebox.showerror(title="Error", message="No Data File Found.")
         else:
+            username = data[website]["Username"]
+            password = data[website]["Password"]
             messagebox.showinfo(title=website, message=f"Username: {username}\nPassword: {password}")
     else:
         messagebox.showerror(title="Error", message="Please enter a website.")
