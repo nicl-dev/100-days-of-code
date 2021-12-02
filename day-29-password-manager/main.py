@@ -68,11 +68,14 @@ def search_credentials():
             with open("data.json", "r") as data_file:
                 data = json.load(data_file)
         except FileNotFoundError:
-            messagebox.showerror(title="Error", message="No Data File Found.")
+            messagebox.showinfo(title="Error", message="No Data File Found.")
         else:
-            username = data[website]["Username"]
-            password = data[website]["Password"]
-            messagebox.showinfo(title=website, message=f"Username: {username}\nPassword: {password}")
+            if website in data:
+                username = data[website]["Username"]
+                password = data[website]["Password"]
+                messagebox.showinfo(title=website, message=f"Username: {username}\nPassword: {password}")
+            else:
+                messagebox.showinfo(title="Error", message=f"No details for {website} exist.")
     else:
         messagebox.showerror(title="Error", message="Please enter a website.")
 
@@ -104,7 +107,7 @@ website_input.grid(row=1, column=1, sticky="W")
 
 username_input = Entry(width=35)
 username_input.grid(row=2, column=1, columnspan=2, stick="EW")
-username_input.insert(END, "mobile.niclas@gmail.com")
+username_input.insert(END, "my_email@gmail.com")
 username_input.focus()
 
 password_input = Entry(width=33)
