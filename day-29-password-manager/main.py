@@ -1,3 +1,4 @@
+import json
 import random
 import pyperclip
 from tkinter import *
@@ -6,8 +7,10 @@ from tkinter import messagebox
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_password():
-    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
-               'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
+               'v',
+               'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
+               'R',
                'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
     numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
@@ -29,17 +32,20 @@ def save():
     website = website_input.get()
     username = username_input.get()
     password = password_input.get()
+    credentials = {
+        website: {
+            "Username": username,
+            "Password": password
+        }
+    }
 
     if website and username and password:
-        save_ok = messagebox.askokcancel(title=website, message=f"Saving the following credentials:\nWebsite: {website}"
-                                                                f"\nUsername: {username}\nPassword: {password}")
-        if save_ok:
-            with open("data.txt", mode="a") as data:
-                data.write(f"{website} | {username} | {password}\n")
+        with open("data.json", mode="w") as data_file:
+            json.dump(credentials, data_file, indent=4)
+            website_input.delete(0, "end")
+            password_input.delete(0, "end")
     else:
         messagebox.showerror(title="Oops :(", message="Please make sure you provided all credentials.")
-    website_input.delete(0, "end")
-    password_input.delete(0, "end")
 
 
 # ---------------------------- UI SETUP ------------------------------- #
