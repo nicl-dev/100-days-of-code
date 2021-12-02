@@ -57,7 +57,24 @@ def save():
             website_input.delete(0, "end")
             password_input.delete(0, "end")
     else:
-        messagebox.showerror(title="Oops :(", message="Please make sure you provided all new_credentials.")
+        messagebox.showerror(title="Oops :(", message="Please make sure you provided all credentials.")
+
+
+# ---------------------------- SAVE PASSWORD ------------------------------- #
+def search_credentials():
+    website = website_input.get()
+    if website:
+        try:
+            with open("data.json", "r") as data_file:
+                data = json.load(data_file)
+                username = data[website]["Username"]
+                password = data[website]["Password"]
+        except FileNotFoundError:
+            messagebox.showerror(title="Error", message="No Data File Found.")
+        else:
+            messagebox.showinfo(title=website, message=f"Username: {username}\nPassword: {password}")
+    else:
+        messagebox.showerror(title="Error", message="Please enter a website.")
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -94,7 +111,7 @@ password_input = Entry(width=33)
 password_input.grid(row=3, column=1, sticky="W")
 
 # Buttons
-search_button = Button(text="Search", width=14)
+search_button = Button(text="Search", width=14, command=search_credentials)
 search_button.grid(row=1, column=2, sticky="E")
 
 generate_password_button = Button(text="Generate Password", width=14, command=generate_password)
