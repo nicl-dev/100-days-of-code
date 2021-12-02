@@ -40,16 +40,23 @@ def save():
     }
 
     if website and username and password:
-        with open("data.json", mode="r") as data_file:
-            # Read old data
-            data = json.load(data_file)
-            # Update data
-            data.update(new_credentials)
-        with open("data.json", mode="w") as data_file:
-            # Save updated data
-            json.dump(data, data_file, indent=4)
-            website_input.delete(0, "end")
-            password_input.delete(0, "end")
+        try:
+            with open("data.json", mode="r") as data_file:
+                # Read old data
+                data = json.load(data_file)
+                # Update data
+                data.update(new_credentials)
+        except FileNotFoundError:
+            with open("data.json", mode="w") as data_file:
+                json.dump(new_credentials, data_file, indent=4)
+                website_input.delete(0, "end")
+                password_input.delete(0, "end")
+        else:
+            with open("data.json", mode="w") as data_file:
+                # Save updated data
+                json.dump(data, data_file, indent=4)
+                website_input.delete(0, "end")
+                password_input.delete(0, "end")
     else:
         messagebox.showerror(title="Oops :(", message="Please make sure you provided all new_credentials.")
 
