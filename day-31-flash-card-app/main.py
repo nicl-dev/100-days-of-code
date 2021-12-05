@@ -1,5 +1,10 @@
 from tkinter import  *
 
+# Set up Window
+root = Tk()
+root.title("Flash Cards")
+root.minsize(width=900, height=626)
+
 # Constants
 BACKGROUND_COLOR = "#aed9c2"
 CARD_BACK_IMAGE = PhotoImage(file="images/card_back.png")
@@ -7,11 +12,8 @@ CARD_FRONT_IMAGE = PhotoImage(file="images/card_front.png")
 RIGHT_IMAGE = PhotoImage(file="images/right.png")
 WRONG_IMAGE = PhotoImage(file="images/wrong.png")
 
-# Set up Window
-root = Tk()
-root.title("Flash Cards")
+# Window configuration
 root.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
-root.minsize(width=900, height=626)
 
 # Canvas
 card_canvas = Canvas(width=800, height=526, bg=BACKGROUND_COLOR, highlightthickness=0)
