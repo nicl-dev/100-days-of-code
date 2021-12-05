@@ -1,9 +1,14 @@
 from tkinter import *
+import pandas
 
 # Set up Window
 root = Tk()
 root.title("Flash Cards")
 root.minsize(width=900, height=626)
+
+# Get the data
+data = pandas.read_csv("data/french_words.csv")
+data_dict = pandas.DataFrame.to_dict(data, orient="records")
 
 # Constants
 BACKGROUND_COLOR = "#B1DDC6"
