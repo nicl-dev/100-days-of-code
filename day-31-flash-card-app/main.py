@@ -1,4 +1,4 @@
-from tkinter import  *
+from tkinter import *
 
 # Set up Window
 root = Tk()
@@ -6,7 +6,7 @@ root.title("Flash Cards")
 root.minsize(width=900, height=626)
 
 # Constants
-BACKGROUND_COLOR = "#aed9c2"
+BACKGROUND_COLOR = "#B1DDC6"
 CARD_BACK_IMAGE = PhotoImage(file="images/card_back.png")
 CARD_FRONT_IMAGE = PhotoImage(file="images/card_front.png")
 RIGHT_IMAGE = PhotoImage(file="images/right.png")
