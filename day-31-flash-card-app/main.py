@@ -1,6 +1,6 @@
 from tkinter import  *
 
-# CONSTANTS
+# Constants
 BACKGROUND_COLOR = "#aed9c2"
 CARD_BACK_IMAGE = PhotoImage(file="images/card_back.png")
 CARD_FRONT_IMAGE = PhotoImage(file="images/card_front.png")
