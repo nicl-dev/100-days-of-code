@@ -20,14 +20,26 @@ root.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
 # Get the data
 data = pandas.read_csv("data/french_words.csv")
 data_dict = pandas.DataFrame.to_dict(data, orient="records")
+new_random_entry = {}
 
 
 def next_card():
+    global new_random_entry, flip_timer
+    root.after_cancel(flip_timer)
     new_random_entry = random.choice(data_dict)
-    new_french_word = new_random_entry['French']
-    new_translation = new_random_entry['English']
-    card_canvas.itemconfig(title, text="French")
-    card_canvas.itemconfig(word, text=new_french_word)
+    card_canvas.itemconfig(card_image, image=CARD_FRONT_IMAGE)
+    card_canvas.itemconfig(title, text="French", fill="black")
+    card_canvas.itemconfig(word, text=new_random_entry['French'], fill="black")
+    flip_timer = root.after(3000, flip_card)
+
+
+def flip_card():
+    card_canvas.itemconfig(title, text="English", fill="white")
+    card_canvas.itemconfig(word, text=new_random_entry['English'], fill="white")
+    card_canvas.itemconfig(card_image, image=CARD_BACK_IMAGE)
+
+
+flip_timer = root.after(3000, flip_card)
 
 
 # Canvas
