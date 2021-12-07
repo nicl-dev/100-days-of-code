@@ -58,7 +58,7 @@ card_canvas.grid(row=0, column=0, columnspan=2)
 
 # Buttons
 right_button = Button(image=RIGHT_IMAGE, highlightthickness=0, highlightcolor="black",
-                      command=lambda a="right": next_card(a))
+                      command=lambda answer="right": next_card(answer))
 right_button.grid(row=1, column=0)
 wrong_button = Button(image=WRONG_IMAGE, highlightthickness=0, command=next_card)
 wrong_button.grid(row=1, column=1)
