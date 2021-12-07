@@ -4,7 +4,6 @@ from tkinter import *
 
 # Set up Window
 root = Tk()
-root.title("Flash Cards")
 
 # Constants
 BACKGROUND_COLOR = "#B1DDC6"
@@ -14,6 +13,7 @@ RIGHT_IMAGE = PhotoImage(file="images/right.png")
 WRONG_IMAGE = PhotoImage(file="images/wrong.png")
 
 # Window configuration
+root.title("Flash Cards")
 root.minsize(width=900, height=626)
 root.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
 
