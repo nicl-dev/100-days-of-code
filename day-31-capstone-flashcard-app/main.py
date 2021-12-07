@@ -27,11 +27,11 @@ new_random_entry = {}
 first_call = True
 
 
-def next_card(method):
+def next_card(answer):
     global new_random_entry, flip_timer, first_call
     root.after_cancel(flip_timer)
     # If the user knows the translation, remove it from the list of possible words. Store the updated list in a new csv.
-    if method == "right":
+    if answer == "right":
         data_dict.remove(new_random_entry)
         words_to_learn = pandas.DataFrame(data_dict)
         words_to_learn.to_csv("data/words_to_learn.csv", index=False)
@@ -59,9 +59,9 @@ card_canvas.grid(row=0, column=0, columnspan=2)
 
 # Buttons
 right_button = Button(image=RIGHT_IMAGE, highlightthickness=0, highlightcolor="black",
-                      command=lambda m="right": next_card(m))
+                      command=lambda a="right": next_card(a))
 right_button.grid(row=1, column=0)
-wrong_button = Button(image=WRONG_IMAGE, highlightthickness=0, command=lambda m="wrong": next_card(m))
+wrong_button = Button(image=WRONG_IMAGE, highlightthickness=0, command=lambda a="wrong": next_card(a))
 wrong_button.grid(row=1, column=1)
 
 next_card("wrong")
