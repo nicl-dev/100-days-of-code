@@ -30,17 +30,11 @@ first_call = True
 def next_card(method):
     global new_random_entry, flip_timer, first_call
     root.after_cancel(flip_timer)
-    # If the user knows the translation, remove it from the list of possible words.
-    if method == "right" and first_call is False:
+    # If the user knows the translation, remove it from the list of possible words. Store the updated list in a new csv.
+    if method == "right":
         data_dict.remove(new_random_entry)
         words_to_learn = pandas.DataFrame(data_dict)
         words_to_learn.to_csv("data/words_to_learn.csv", index=False)
-    # We call the function with method = wrong first. Nothing should happen at that point
-    elif first_call is True:
-        first_call = False
-    # If the user does not know the word
-    else:
-        pass
     new_random_entry = random.choice(data_dict)
     card_canvas.itemconfig(card_image, image=CARD_FRONT_IMAGE)
     card_canvas.itemconfig(title, text="French", fill="black")
