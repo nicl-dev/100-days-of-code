@@ -18,14 +18,29 @@ WRONG_IMAGE = PhotoImage(file="images/wrong.png")
 root.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
 
 # Get the data
-data = pandas.read_csv("data/french_words.csv")
+try:
+    data = pandas.read_csv("data/words_to_learn.csv")
+except FileNotFoundError:
+    data = pandas.read_csv("data/french_words.csv")
 data_dict = pandas.DataFrame.to_dict(data, orient="records")
 new_random_entry = {}
+first_call = True
 
 
-def next_card():
-    global new_random_entry, flip_timer
+def next_card(method):
+    global new_random_entry, flip_timer, first_call
     root.after_cancel(flip_timer)
+    # If the user knows the translation, remove it from the list of possible words.
+    if method == "right" and first_call is False:
+        data_dict.remove(new_random_entry)
+        words_to_learn = pandas.DataFrame(data_dict)
+        words_to_learn.to_csv("data/words_to_learn.csv", index=False)
+    # We call the function with method = wrong first. Nothing should happen at that point
+    elif first_call is True:
+        first_call = False
+    # If the user does not know the word
+    else:
+        pass
     new_random_entry = random.choice(data_dict)
     card_canvas.itemconfig(card_image, image=CARD_FRONT_IMAGE)
     card_canvas.itemconfig(title, text="French", fill="black")
@@ -41,7 +56,6 @@ def flip_card():
 
 flip_timer = root.after(3000, flip_card)
 
-
 # Canvas
 card_canvas = Canvas(width=800, height=526, bg=BACKGROUND_COLOR, highlightthickness=0)
 card_image = card_canvas.create_image(400, 263, image=CARD_FRONT_IMAGE)
@@ -50,11 +64,12 @@ word = card_canvas.create_text(400, 263, text="word", font=("Arial", 60, "bold")
 card_canvas.grid(row=0, column=0, columnspan=2)
 
 # Buttons
-right_button = Button(image=RIGHT_IMAGE, highlightthickness=0, highlightcolor="black", command=next_card)
+right_button = Button(image=RIGHT_IMAGE, highlightthickness=0, highlightcolor="black",
+                      command=lambda m="right": next_card(m))
 right_button.grid(row=1, column=0)
-wrong_button = Button(image=WRONG_IMAGE, highlightthickness=0, command=next_card)
+wrong_button = Button(image=WRONG_IMAGE, highlightthickness=0, command=lambda m="wrong": next_card(m))
 wrong_button.grid(row=1, column=1)
 
-next_card()
+next_card("wrong")
 
 root.mainloop()
