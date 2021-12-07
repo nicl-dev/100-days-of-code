@@ -26,7 +26,7 @@ data_dict = pandas.DataFrame.to_dict(data, orient="records")
 new_random_entry = {}
 
 
-def next_card(answer):
+def next_card(answer="wrong"):
     global new_random_entry, flip_timer
     root.after_cancel(flip_timer)
     # If the user knows the translation, remove it from the list of possible words. Store the updated list in a new csv.
@@ -60,9 +60,9 @@ card_canvas.grid(row=0, column=0, columnspan=2)
 right_button = Button(image=RIGHT_IMAGE, highlightthickness=0, highlightcolor="black",
                       command=lambda a="right": next_card(a))
 right_button.grid(row=1, column=0)
-wrong_button = Button(image=WRONG_IMAGE, highlightthickness=0, command=lambda a="wrong": next_card(a))
+wrong_button = Button(image=WRONG_IMAGE, highlightthickness=0, command=next_card)
 wrong_button.grid(row=1, column=1)
 
-next_card("wrong")
+next_card()
 
 root.mainloop()
