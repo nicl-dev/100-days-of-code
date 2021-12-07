@@ -24,11 +24,10 @@ except FileNotFoundError:
     data = pandas.read_csv("data/french_words.csv")
 data_dict = pandas.DataFrame.to_dict(data, orient="records")
 new_random_entry = {}
-first_call = True
 
 
 def next_card(answer):
-    global new_random_entry, flip_timer, first_call
+    global new_random_entry, flip_timer
     root.after_cancel(flip_timer)
     # If the user knows the translation, remove it from the list of possible words. Store the updated list in a new csv.
     if answer == "right":
